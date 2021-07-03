@@ -1,4 +1,9 @@
 import React from "react";
+
+// Component imports
+import Header from './components/Header'
+import Players from './components/Players'
+
 export default class App extends React.Component {
   state = {
     loading: true,
@@ -21,10 +26,15 @@ export default class App extends React.Component {
       return <div>loading...</div>;
     }
     if (!this.state.results.length) {
-      return <div>No turns played!</div>;
+      return <div >No turns played!</div>;
     }
     return (
-      <div>
+      <div style={{
+        backgroundColor: '#F4D6CC',
+        color: '#4A5859'
+      }}>
+        <Header />
+        {/* <Players /> */}
         {this.state.results.map(eachTurn => (
           <div key={eachTurn.turn}>
             <div>Possession: {eachTurn.turn}<br></br>{this.state.player1name}: {eachTurn.p1Score}<br></br>{this.state.player2name}: {eachTurn.p2Score}</div>
