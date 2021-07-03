@@ -9,17 +9,15 @@ import { red } from "@material-ui/core/colors";
 export default class Header extends React.Component {
   render() {
     return (
-      <div style={{
-        paddingBottom: 32
-      }}>
+      <div>
         <AppBar position="static" style={{
-          backgroundColor: '#32373B',
+          backgroundColor: '#F4D6CC',
           marginTop: '0'
         }}>
           <Toolbar variant="dense">
             <Typography variant="h6" style={{
               fontSize: '100%',
-              color: '#F4D6CC'
+              color: '#32373B'
             }}>
               BBALL 1v1
             </Typography>

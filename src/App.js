@@ -2,7 +2,8 @@ import React from "react";
 
 // Component imports
 import Header from './components/Header'
-import Players from './components/Players'
+import Help from './components/Help'
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 export default class App extends React.Component {
   state = {
@@ -23,18 +24,29 @@ export default class App extends React.Component {
   }
   render() {
     if (this.state.loading) {
-      return <div>loading...</div>;
+      return (
+        <div>
+          <Header />
+          <LinearProgress style={{
+            marginTop: '2rem',
+            backgroundColor: '#32373B'
+          }} />
+        </div>)
     }
     if (!this.state.results.length) {
-      return <div >No turns played!</div>;
+      return (
+        <div >
+          <Header />
+          <h1>No results.</h1>
+        </div>);
     }
     return (
       <div style={{
-        backgroundColor: '#F4D6CC',
-        color: '#4A5859'
+        backgroundColor: '#32373B',
+        color: '#F4D6CC'
       }}>
         <Header />
-        {/* <Players /> */}
+        <Help />
         {this.state.results.map(eachTurn => (
           <div key={eachTurn.turn}>
             <div>Possession: {eachTurn.turn}<br></br>{this.state.player1name}: {eachTurn.p1Score}<br></br>{this.state.player2name}: {eachTurn.p2Score}</div>
