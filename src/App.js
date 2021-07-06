@@ -2,7 +2,7 @@ import React from "react";
 
 // Component imports
 import Header from './components/Header'
-import Help from './components/Help'
+import StartSim from './components/StartSim'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 export default class App extends React.Component {
@@ -46,7 +46,7 @@ export default class App extends React.Component {
         color: '#F4D6CC'
       }}>
         <Header />
-        <Help />
+        <StartSim />
         {this.state.results.map(eachTurn => (
           <div key={eachTurn.turn}>
             <div>Possession: {eachTurn.turn}<br></br>{this.state.player1name}: {eachTurn.p1Score}<br></br>{this.state.player2name}: {eachTurn.p2Score}</div>
