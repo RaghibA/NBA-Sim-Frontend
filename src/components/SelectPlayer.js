@@ -1,5 +1,5 @@
 // HEADER
-import React from "react"
+import React, { useState } from "react"
 
 // Material 
 import { Chip, Divider, Slider, Typography, withStyles, makeStyles } from '@material-ui/core';
@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SelectPlayer() {
+
+  //! Look up chip array
+
+  const [scoreLimit, setLimit] = useState(11)
 
   const classes = useStyles()
   
@@ -47,11 +51,17 @@ export default function SelectPlayer() {
     }
   })(Slider)
 
+  // ScoreChange
+  const handleChange = (event, newValue) => {
+    setLimit(newValue)
+  }
+
   return (
       <div className="classes.root">
 
         <h3 style={{
-          textAlign: 'center'
+          textAlign: 'center',
+          color:'#F4D6CC'
         }}>Select two players and a score limit to simulate a 1v1 game.</h3>
 
         <div style={{
@@ -74,23 +84,23 @@ export default function SelectPlayer() {
         <div style={{
           paddingTop: '1rem',
           marginInline: '20%'
-        }}>
-          <Typography >
-            Score Limit: {}
+      }}>
+        
+        <Typography style={{
+            color:'#F4D6CC'
+          }}>
+            Score Limit: {scoreLimit}
           </Typography>
         
-          <StyleSlider
-            id="discrete-slider"
-            gutterBottom
-            defaultValue={11}
-            getAriaValueText={0}
-            aria-labelledby="discrete-slider"
-            valueLabelDisplay="auto"
-            min={11}
-            max={21}
-            style={{
-            
-          }} />        
+        <StyleSlider
+          aria-labelledby="continuous-slider"
+          value={scoreLimit}
+          gutterBottom
+          valueLabelDisplay="auto"
+          onChange={handleChange}
+          min={1}
+          max={21} />
+        
         </div>
 
         <Divider light style={{
