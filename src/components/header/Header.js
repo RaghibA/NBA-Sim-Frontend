@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-import logo from '../images/bball2.png'
+import logo from '../../images/bball2.png'
 
 export default class Header extends React.Component {
   render() {

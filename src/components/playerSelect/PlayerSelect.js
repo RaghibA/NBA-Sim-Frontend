@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SelectPlayer() {
+function PlayerSelect(props) {
 
   //! Look up chip array
 
@@ -111,3 +111,4 @@ export default function SelectPlayer() {
   )
 }
 
+export default PlayerSelect

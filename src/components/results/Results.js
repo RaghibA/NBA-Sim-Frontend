@@ -1,5 +1,6 @@
 import React from "react";
 import LinearProgress from '@material-ui/core/LinearProgress'
+
 export default class Results extends React.Component {
     state = {
       loading: true,
