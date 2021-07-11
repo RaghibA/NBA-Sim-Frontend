@@ -13,7 +13,7 @@ function App() {
 	return (
     <div>
 			<Header />
-      <PlayerSelect players={PlayerList.players}/>
+      <PlayerSelect players={PlayerList}/>
       <Results />
     </div>
 	);
