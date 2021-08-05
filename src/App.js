@@ -1,21 +1,12 @@
-import React from "react";
-
-// Component imports
-import Results from './components/results/Results'
-import Header from './components/header/Header'
-import PlayerSelect from './components/playerSelect/PlayerSelect'
-
-// Util imports
-import PlayerList from './utils/PlayerList'
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
+  return (
+    <div className="App">
 
-	return (
-    <div>
-			<Header />
-      <PlayerSelect players={PlayerList}/>
-      <Results />
     </div>
-	);
+  );
 }
+
 export default App;
