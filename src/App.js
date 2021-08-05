@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 
 // Component Imports
 import Header from './Components/Header/Header'
+import Splash from './Components/Splash/Splash'
 import PlayerSelect from './Components/PlayerSelect/PlayerSelect'
 import Simulation from './Components/Simulation/Simulation'
 import About from './Components/About/About'
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
+      <Splash />
       <PlayerSelect />
       <Simulation />
       <About />

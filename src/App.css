@@ -8,6 +8,7 @@
 
   --bg-primary-color: rgb(26, 31, 39);
   --bg-secondary-color: rgb(233, 233, 233);
+  --bg-accent-color: rgb(234, 92, 92);
 }
 
 *{
@@ -19,6 +20,34 @@
 
 body {
   background-color: var(--bg-primary-color);
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-accent {
+  color: var(--accent-color);
+}
+
+.text-accent2 {
+  color: var(--accent2-color);
+}
+
+.bg-primary {
+  background: var(--bg-primary-color);
+}
+
+.bg-secondary {
+  background: var(--bg-secondary-color);
+}
+
+.bg-accent {
+  background: var(--bg-accent-color);
 }
 
 .btn-primary {
