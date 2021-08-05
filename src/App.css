@@ -4,15 +4,31 @@
   --primary-color: rgb(31, 42, 56);
   --secondary-color: rgb(238, 234, 230);
   --accent-color: rgb(234, 92, 92);
+  --accent2-color: rgb(6, 17, 30);
 
   --bg-primary-color: rgb(26, 31, 39);
   --bg-secondary-color: rgb(233, 233, 233);
 }
 
 *{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
 
 body {
   background-color: var(--bg-primary-color);
+}
+
+.btn-primary {
+  text-decoration: none;
+  color: var(--secondary-color);
+  background: var(--bg-primary-color);
+  padding: 6px;
+}
+
+.btn-primary:hover {
+  background: var(--accent2-color);
+  transition: .25s ease;
 }
