@@ -44,10 +44,13 @@ const PlayerSelect = (props) => {
   }
 
   return (
-    <div className='bg-primary select-container'>
-      <form onSubmit={submitHandler}>
+    <div className='bg-secondary select-container'>
 
-        <select onChange={playerOneChangeHandler}>
+      <h1 className='form-heading'>Configure Simulation</h1>
+
+      <form className='form-control' onSubmit={submitHandler}>
+
+        <select className='select-themed form-p1' onChange={playerOneChangeHandler}>
           <option selected label='Lebron James'>1</option>
           <option label='Luka Doncic'>2</option>
           <option label='Kobe Bryant'>3</option>
@@ -58,7 +61,9 @@ const PlayerSelect = (props) => {
           <option label="Shaquille O'Neal">8</option>
         </select>
 
-        <select onChange={playerTwoChangeHandler}>
+        <label className='text-primary vs'>VS</label>
+
+        <select className='select-themed form-p2' onChange={playerTwoChangeHandler}>
           <option label='Lebron James'>1</option>
           <option label='Luka Doncic'>2</option>
           <option label='Kobe Bryant'>3</option>
@@ -69,11 +74,11 @@ const PlayerSelect = (props) => {
           <option label="Shaquille O'Neal">8</option>
         </select>
 
-        <input onChange={scoreLimitChangeHandler} type='range' min='1' max='30'/>
+        <input className='form-score' onChange={scoreLimitChangeHandler} type='range' min='1' max='30' />
 
-        <button onClick={simHandler} type='submit'>SIM</button>
-
+        <button className='form-button' onClick={simHandler} type='submit'>SIM</button>
       </form>
+
     </div>
   )
 }

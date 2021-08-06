@@ -18,21 +18,18 @@ const Splash = () => {
           <div>
             <img className='splash-img' src={img1} alt=''/>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sequi dolorum laboriosam.</p>
         </div>
         <div className='splash-section splash-2'>
           <h2 className='text-primary'>Set The Score</h2>
           <div>
             <img className='splash-img' src={img1} alt=''/>
           </div>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
         <div className='splash-section splash-2'>
           <h2 className='text-primary'>Start The Game</h2>
           <div>
             <img className='splash-img' src={img1} alt=''/>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, iste. Repellendus!</p>
         </div>
       </div>
     </div>
