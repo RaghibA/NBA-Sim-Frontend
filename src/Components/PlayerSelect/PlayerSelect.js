@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // Styles Import
 import './PlayerSelect.css'
 
 const PlayerSelect = (props) => {
+
   return (
-    <div>PlayerSelect Component</div>
+    <div class='bg-primary select-container'>
+      <form></form>
+    </div>
   )
 }
 

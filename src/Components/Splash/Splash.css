@@ -1,5 +1,5 @@
 .splash-container {
-  height: 100vh;
+  height: 700px;
   width: 100%;
   padding-top: 60px;
   background: var(--bg-primary-color);
@@ -7,21 +7,21 @@
 
 .splash-grid {
   width: 100%;
-  height: 100%;
+  height: 560px;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 3fr;
+  grid-template-rows: 1fr;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 2rem 2rem;
+  padding: 2rem 10rem;
 }
 
 .splash-heading {
   display: grid;
   width: 100%;
-  height: 100%;
+  height: 80px;
   grid-row: 1;
   grid-column: 1 / span 3;
   justify-content: center;
@@ -43,6 +43,9 @@
   grid-template-rows: 1fr 2fr 2fr;
   padding: 1rem 1rem;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  min-width: 320px;
+  max-width: 375px;
+  justify-self: center;
 }
 
 .splash-img {
