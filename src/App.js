@@ -13,11 +13,25 @@ import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 const App = () => {
+
+  const [simData, setSimData] = useState({
+    player1: 1,
+    player2: 2,
+    scoreLimit: 11,
+    sim: false
+  })
+
+  const simDataHandler = (newSimData) => {
+    setSimData(newSimData)
+
+    console.log(simData);
+  }
+
   return (
     <div className="App">
       <Header />
       <Splash />
-      <PlayerSelect />
+      <PlayerSelect onSaveSimData={simDataHandler}/>
       <Simulation />
       <About />
     </div>
