@@ -11,7 +11,7 @@ const Header = () => {
           <h1 style={{fontSize: '18px'}}>NBA 1V1</h1>
         </div>
         <div className='nav-links'>
-          <a href='' className='nav-link'>About</a>
+          <a href='https://github.com/RaghibA/nba-1v1-sim-api' rel='noreferrer' target='_blank' className='nav-link'>About</a>
         </div>
       </div>
     </div>
