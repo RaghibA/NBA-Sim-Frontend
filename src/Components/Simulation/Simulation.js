@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Slider, Typography, LinearProgress } from '@material-ui/core'
 import axios from 'axios'
 
@@ -51,25 +51,28 @@ const Simulation = (props) => {
         const results = response.data
         return results
       })
-    
+
     setSimResults(res)
   }
 
   useEffect(() => {
-    if(simResults !== undefined) {simHandler(simResults)}
+    if (simResults !== undefined) { simHandler(simResults) }
   }, [simResults])
 
   //! Step through simulation and update JSX elemennts dynamically
-  const simHandler = (sim) => {
+  const timer = ms => new Promise(res => setTimeout(res, ms))
+  const simHandler = async (sim) => {
     console.log(sim)
     for (let i = 0; i < sim.turns.length; i++) {
-      setTimeout(() => {
-        setP1Score(sim.turns[i].p1Score)
-        setP2Score(sim.turns[i].p2Score)
-        setTurnNumber(sim.turns[i].turn)
-        setPossesion(sim.turns[i].pos)
-        setshotTaken(sim.turns[i].shot)
-      }, 1500);
+
+      await timer(1200)
+      
+      setP1Score(sim.turns[i].p1Score)
+      setP2Score(sim.turns[i].p2Score)
+      setTurnNumber(sim.turns[i].turn)
+      setPossesion(sim.turns[i].pos)
+      setshotTaken(sim.turns[i].shot)
+
     }
   }
 
@@ -114,7 +117,7 @@ const Simulation = (props) => {
             defaultValue={scoreLimit}
             min={1}
             max={30}
-            // onChange={scoreLimitChangeHandler}
+          // onChange={scoreLimitChangeHandler}
           />
         </div>
 
