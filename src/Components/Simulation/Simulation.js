@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Slider, Typography } from '@material-ui/core'
+import React, { useState,useEffect } from 'react'
+import { Slider, Typography, LinearProgress } from '@material-ui/core'
 import axios from 'axios'
 
 // Styles Import
@@ -7,16 +7,18 @@ import './Simulation.css'
 
 const Simulation = (props) => {
 
+  // Config states
   const [playerOne, setPlayerOne] = useState(1)
   const [playerTwo, setPlayerTwo] = useState(7)
   const [scoreLimit, setScoreLimit] = useState(11)
   const [simResults, setSimResults] = useState(undefined)
 
   // Simulation states
-  // 1. Player1 Score
-  // 2. Player2 Score
-  // 3. Turn #
-  // 4. Possession
+  const [p1Score, setP1Score] = useState(0)
+  const [p2Score, setP2Score] = useState(0)
+  const [turnNumber, setTurnNumber] = useState(0)
+  const [possesion, setPossesion] = useState(2)
+  const [shotTaken, setshotTaken] = useState(0)
   // 5. Description: ADD TO API
 
   // Player Objects
@@ -36,7 +38,7 @@ const Simulation = (props) => {
     setScoreLimit(+event.target.value)
   }
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault()
     const simData = {
       playerOne,
@@ -44,19 +46,32 @@ const Simulation = (props) => {
       scoreLimit,
     }
 
-    axios.get(`https://bball-1v1.herokuapp.com/sim/${simData.playerOne}/${simData.playerTwo}/${simData.scoreLimit}`)
-      .then(res => {
-        const results = res.data
-        setSimResults(results)
+    let res = await axios.get(`https://bball-1v1.herokuapp.com/sim/${simData.playerOne}/${simData.playerTwo}/${simData.scoreLimit}`)
+      .then(response => {
+        const results = response.data
+        return results
       })
     
-    //! Invoke sim handler
+    setSimResults(res)
   }
 
-  //? Step through simulation and update JSX elemennts dynamically
-  // const simHandler = () => {
+  useEffect(() => {
+    if(simResults !== undefined) {simHandler(simResults)}
+  }, [simResults])
 
-  // }
+  //! Step through simulation and update JSX elemennts dynamically
+  const simHandler = (sim) => {
+    console.log(sim)
+    for (let i = 0; i < sim.turns.length; i++) {
+      setTimeout(() => {
+        setP1Score(sim.turns[i].p1Score)
+        setP2Score(sim.turns[i].p2Score)
+        setTurnNumber(sim.turns[i].turn)
+        setPossesion(sim.turns[i].pos)
+        setshotTaken(sim.turns[i].shot)
+      }, 1500);
+    }
+  }
 
   return (
     <div className='bg-secondary select-container'>
@@ -90,7 +105,7 @@ const Simulation = (props) => {
         </select>
 
         <div className='form-score'>
-          <Typography className='text-primary' style={{fontSize: '14px'}} gutterBottom>
+          <Typography className='text-primary' style={{ fontSize: '14px' }} gutterBottom>
             Score Limit
           </Typography>
           <Slider
@@ -99,7 +114,8 @@ const Simulation = (props) => {
             defaultValue={scoreLimit}
             min={1}
             max={30}
-            onChange={scoreLimitChangeHandler} />
+            // onChange={scoreLimitChangeHandler}
+          />
         </div>
 
         <button className='form-button' type='submit'>SIM</button>
@@ -108,22 +124,30 @@ const Simulation = (props) => {
       <div className='sim-container'>
         <div className='p1-container'>
           <h3 className='text-primary'>{players[playerOne]}</h3>
-          <h1>0</h1>
+          <h1>{p1Score}</h1>
+          {possesion === 0 ? <div className='pos-cont'><div className='sim-pos'></div></div>
+            : <div className='pos-cont'><div className='sim-pos-f'></div></div>}
         </div>
 
         <div className='sim-controller'>
-          <button className='controller-btn'>FFW</button>
-          <button className='controller-btn'>SKIP</button>
+          <div>TURN: {turnNumber}</div>
+          <div className='btn-container'>
+            <button className='controller-btn'>FFW</button>
+            <button className='controller-btn'>SKIP</button>
+          </div>
         </div>
 
         <div className='p2-container'>
           <h3 className='text-primary'>{players[playerTwo]}</h3>
-          <h1>0</h1>
+          <h1>{p2Score}</h1>
+          {possesion === 1 ? <div className='pos-cont'><div className='sim-pos'></div></div>
+            : <div className='pos-cont'><div className='sim-pos-f'></div></div>}
         </div>
 
         <div className='sim-notis'>
           {/* <p>Text notifications for each possesion</p> */}
-          {simResults !== undefined ? <h1>works: now put simResults</h1> : <h1>no data yet</h1>}
+          {simResults !== undefined ? <div><p>Shot taken: {shotTaken}</p> <p>Shot made: </p> </div>
+            : <div><p>Simulation Results</p> <p className='sim-res-placeholder' >no data</p> </div>}
         </div>
       </div>
 
