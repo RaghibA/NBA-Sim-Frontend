@@ -83,7 +83,8 @@ const Simulation = (props) => {
       setshotTaken(sim.turns[i].shot)
       setmadeShot(sim.turns[i].madeShot)
 
-      setturnCounter(prevturnCounter => [...prevturnCounter, <p key="{sim.turns[i].turn}">Turn: {sim.turns[i].turn}<br /></p>]);
+      setturnCounter((prevturnCounter) => [...prevturnCounter, <p key={i} >Turn: {sim.turns[i].turn}<br /></p>]);
+
     }
   }
 
