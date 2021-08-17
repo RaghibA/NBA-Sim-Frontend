@@ -19,6 +19,11 @@ const Simulation = (props) => {
   const [turnNumber, setTurnNumber] = useState(0)
   const [possesion, setPossesion] = useState(2)
   const [shotTaken, setshotTaken] = useState(0)
+  
+  const [madeShot, setmadeShot] = useState(false)
+
+  const [turnCounter, setturnCounter] = useState([]);
+
   // 5. Description: ADD TO API
 
   // Player Objects
@@ -63,6 +68,8 @@ const Simulation = (props) => {
   const timer = ms => new Promise(res => setTimeout(res, ms))
   const simHandler = async (sim) => {
     console.log(sim)
+    console.log(sim.turns)
+   
     for (let i = 0; i < sim.turns.length; i++) {
 
       await timer(1200)
@@ -72,7 +79,9 @@ const Simulation = (props) => {
       setTurnNumber(sim.turns[i].turn)
       setPossesion(sim.turns[i].pos)
       setshotTaken(sim.turns[i].shot)
+      setmadeShot(sim.turns[i].madeShot)
 
+      setturnCounter(prevturnCounter => [...prevturnCounter, <p key="{sim.turns[i].turn}">Turn: {sim.turns[i].turn}<br /></p>]);
     }
   }
 
@@ -149,9 +158,13 @@ const Simulation = (props) => {
 
         <div className='sim-notis'>
           {/* <p>Text notifications for each possesion</p> */}
-          {simResults !== undefined ? <div><p>Shot taken: {shotTaken}</p> <p>Shot made: </p> </div>
+          {simResults !== undefined ? <div><p>Shot taken: {shotTaken}</p> <p>Made Shot: {madeShot.toString()}</p> </div>
             : <div><p>Simulation Results</p> <p className='sim-res-placeholder' >no data</p> </div>}
         </div>
+      </div>
+
+      <div className='sim-turnCount'>
+        {turnCounter}
       </div>
 
     </div>
