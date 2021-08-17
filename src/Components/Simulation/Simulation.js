@@ -7,6 +7,9 @@ import './Simulation.css'
 
 const Simulation = (props) => {
 
+
+  const [disable, setDisable] = useState(false);
+
   // Config states
   const [playerOne, setPlayerOne] = useState(1)
   const [playerTwo, setPlayerTwo] = useState(7)
@@ -46,6 +49,7 @@ const Simulation = (props) => {
 
   const submitHandler = async (event) => {
     event.preventDefault()
+    setDisable(true)
     const simData = {
       playerOne,
       playerTwo,
@@ -84,6 +88,7 @@ const Simulation = (props) => {
       setmadeShot(sim.turns[i].madeShot)
       setturnCounter((prevturnCounter) => [...prevturnCounter, <p key={i} >Turn: {sim.turns[i].turn}<br /></p>]);
     }
+    setDisable(false)
   }
 
   return (
@@ -131,7 +136,7 @@ const Simulation = (props) => {
           />
         </div>
 
-        <button className='form-button' type='submit'>SIM</button>
+        <button className='form-button' type='submit' disabled={disable}>SIM</button>
       </form>
 
       <div className='sim-container'>
