@@ -39,8 +39,9 @@ const Simulation = (props) => {
     setPlayerTwo(+event.target.value)
   }
 
-  const scoreLimitChangeHandler = (event) => {
-    setScoreLimit(+event.target.value)
+  const scoreLimitChangeHandler = (event, newValue) => {
+    setScoreLimit(newValue)
+    //console.log(scoreLimit)
   }
 
   const submitHandler = async (event) => {
@@ -50,7 +51,7 @@ const Simulation = (props) => {
       playerTwo,
       scoreLimit,
     }
-
+    console.log(simData)
     let res = await axios.get(`https://bball-1v1.herokuapp.com/sim/${simData.playerOne}/${simData.playerTwo}/${simData.scoreLimit}`)
       .then(response => {
         const results = response.data
@@ -123,10 +124,10 @@ const Simulation = (props) => {
           <Slider
             step={1}
             valueLabelDisplay="auto"
-            defaultValue={scoreLimit}
+            value={scoreLimit}
             min={1}
             max={30}
-          // onChange={scoreLimitChangeHandler}
+            onChange={scoreLimitChangeHandler}
           />
         </div>
 
