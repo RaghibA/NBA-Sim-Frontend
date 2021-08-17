@@ -51,6 +51,7 @@ const Simulation = (props) => {
       playerTwo,
       scoreLimit,
     }
+    setturnCounter([]);
     console.log(simData)
     let res = await axios.get(`https://bball-1v1.herokuapp.com/sim/${simData.playerOne}/${simData.playerTwo}/${simData.scoreLimit}`)
       .then(response => {
